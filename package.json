@@ -1,0 +1,21 @@
+{
+  "name": "wordgen.js",
+  "version": "0.0.0",
+  "description": "A package to generate not dictionary words",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RaydanOMGr/wordgen.js.git"
+  },
+  "keywords": [],
+  "author": "andreasmelone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RaydanOMGr/wordgen.js/issues"
+  },
+  "homepage": "https://github.com/RaydanOMGr/wordgen.js#readme"
+}
