@@ -1,2 +1,1 @@
-# wordgenerator
-Generate speakable strings
+# string,js
