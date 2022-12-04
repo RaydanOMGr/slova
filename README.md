@@ -1,1 +1,1 @@
-# string.js
+# wordgen.js
