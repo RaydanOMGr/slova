@@ -1,8 +1,14 @@
 module.exports = class Generator {
 	constructor() {
-		this.consonants = "bcdfghjklmnpqrstvwxz".split("");
-		this.vowels = "aeiouy".split("");
-		this.digraphs = "ck ch sh".split(" ");
+		this.consonants = [
+			{ letter: "b", priority: 1 }, { letter: "c", priority: 2 }, { letter: "d", priority: 1 }, { letter: "f", priority: 1 }, { letter: "g", priority: 2 }, { letter: "h", priority: 2 }, { letter: "j", priority: 2 }, { letter: "k", priority: 1 }, { letter: "l", priority: 1 }, { letter: "m", priority: 1 }, { letter: "n", priority: 1 }, { letter: "p", priority: 1 }, { letter: "q", priority: 4 }, { letter: "r", priority: 1 }, { letter: "s", priority: 1 }, { letter: "t", priority: 1 }, { letter: "v", priority: 2 }, { letter: "w", priority: 3 }, { letter: "x", priority: 3 }, { letter: "z", priority: 3 }
+		];
+		this.vowels = [
+			{ letter: "a", priority: 1 }, { letter: "e", priority: 1 }, { letter: "i", priority: 1 }, { letter: "o", priority: 1 }, { letter: "u", priority: 1 }, { letter: "y", priority: 2 }
+		];
+		this.digraphs = [
+			{ letter: "ch", priority: 1 }, { letter: "ck", priority: 1 }, { letter: "sh", priority: 1 }
+		];
 	}
 
 	sampler(length, syllables = (length / 3)) {
@@ -12,7 +18,7 @@ module.exports = class Generator {
 		if (length === 1) {
 			return this.consonants[
 				Math.floor(Math.random() * this.consonants.length)
-			];
+			].letter;
 		}
 
 		let wordLength = length / syllables;
@@ -32,9 +38,6 @@ module.exports = class Generator {
 		let word = "";
 		if (syllables === 0) throw new Error("Syllables cannot be 0!");
 		for (let i = 0; i < syllables; i++) {
-			const randomNum1 = Math.floor(Math.random() * this.vowels.length);
-			const randomNum2 = Math.floor(Math.random() * this.consonants.length);
-
 			const thirdLetter = Math.floor(Math.random() * 2);
 
 			let syllable = "";
@@ -42,25 +45,25 @@ module.exports = class Generator {
 				const randomNum3 = Math.floor(Math.random() * this.consonants.length);
 				const randomNum4 = Math.floor(Math.random() * 2);
 
-				syllable = syllable + this.consonants[randomNum2];
+				syllable = syllable + this.getLetter(this.consonants);
 				if (randomNum4 == 0) {
-					syllable = syllable + this.vowels[randomNum1];
-					syllable = syllable + this.consonants[randomNum3];
+					syllable = syllable + this.getLetter(this.vowels);
+					syllable = syllable + this.getLetter(this.consonants);
 				} else if (randomNum4 == 1) {
 					const randomNum5 = Math.floor(Math.random() * this.vowels.length);
 
-					syllable = syllable + this.vowels[randomNum1];
-					syllable = syllable + this.vowels[randomNum5];
+					syllable = syllable + this.getLetter(this.vowels);
+					syllable = syllable + this.getLetter(this.vowels);
 				}
 			} else if (thirdLetter == 0) {
-				syllable = syllable + this.consonants[randomNum2];
-				syllable = syllable + this.vowels[randomNum1];
+                                syllable = syllable + this.getLetter(this.consonants);
+				syllable = syllable + this.getLetter(this.vowels);
 
 				const digraphLetters = Math.floor(Math.random() * 2);
 				if (digraphLetters == 1) {
 					const randomNum4 = Math.floor(Math.random() * this.digraphs.length);
 
-					syllable = syllable + this.digraphs[randomNum4];
+					syllable = syllable + this.getLetter(this.digraphs);
 				}
 			}
 
@@ -68,5 +71,15 @@ module.exports = class Generator {
 		}
 
 		return word;
+	}
+
+	getLetter(letterList) {
+		let randomNum = Math.floor(Math.random() * letterList.length); 
+		let letter = letterList[randomNum]
+                if(Math.floor(Math.random() * (letter.priority + 1)) !== letter.priority) {
+                        return this.getLetter(letterList);
+                }
+
+		return letter.letter;
 	}
 }

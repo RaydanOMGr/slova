@@ -1,6 +1,6 @@
 {
   "name": "wordgen.js",
-  "version": "0.0.0",
+  "version": "0.1.6",
   "description": "A package to generate not dictionary words",
   "main": "src/index.js",
   "types": "src/index.d.ts",
@@ -12,7 +12,16 @@
     "url": "git+https://github.com/RaydanOMGr/wordgen.js.git"
   },
   "keywords": [],
-  "author": "andreasmelone",
+  "contributors": [
+	  {
+		  "name": "andreasmelone",
+		  "url": "https://github.com/RaydanOMGr"
+	  },
+	  {
+		  "name": "domin-mnd",
+		  "url": "https://domin.pro"
+	  }
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/RaydanOMGr/wordgen.js/issues"
