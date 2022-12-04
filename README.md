@@ -1,1 +1,1 @@
-# string,js
+# string.js
