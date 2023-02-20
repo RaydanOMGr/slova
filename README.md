@@ -61,8 +61,8 @@ import { mumbleRap } from "slova"; // esm
 const { mumbleRap } = require("slova"); // or cjs
 
 const randomshit = mumbleRap(
-    'q-c-q-q-c', // Scheme of the mumble rap separated with "-" (quatrains are "q", choruses are "c")
-    150 // Generates a quatrain & chorus with 150 letters (spaces count as well)
+  'q-c-q-q-c', // Scheme of the mumble rap separated with "-" (quatrains are "q", choruses are "c")
+  150 // Generates a quatrain & chorus with 150 letters (spaces count as well)
 );
 
 console.log(randomshit());
