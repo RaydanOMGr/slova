@@ -1,4 +1,5 @@
 import { Models } from "../types/models";
+import { Param } from "../types/parameters";
 import { consonants, digraphs, vowels } from "./dictionary";
 
 function getLetter(letterList: Models.Any[]): string {
@@ -49,10 +50,10 @@ function word(syllables: number): string {
     return word;
 }
 
-export function sampleWord(
-	length: number,
-	syllables: number = length / 3
-): string {
+export function generateString({
+	length,
+	syllables = length / 3
+}: Param.Generator): string {
 
 	if (length === 0) throw "Length cannot be 0!";
 	if (length === 1) {

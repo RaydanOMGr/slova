@@ -1,7 +1,7 @@
 import { mumbleRap, text, word } from "../src";
 
 test("Mumble Rap", () => {
-  const mumble = mumbleRap("q-c-q-q-c", 150);
+  const mumble = mumbleRap({ scheme: "q-c-q-q-c", length: 150 });
 
   // A length must be 5
   // As 3 quatrains + 2 chorus
@@ -13,8 +13,8 @@ test("Mumble Rap", () => {
 });
 
 test("Text", () => {
-  const withoutParagraphs = text(150, 40);
-  const withParagraphs = text(150, 40, 3);
+  const withoutParagraphs = text({ length: 150, words: 40 });
+  const withParagraphs = text({ length: 150, words: 40, paragraphs: 3 });
 
   // Test if text generates 40 words
   expect(withoutParagraphs()[0].split(" ")).toHaveLength(40);
@@ -24,8 +24,8 @@ test("Text", () => {
 });
 
 test("Word", () => {
-  const bigWord = word(150);
-  const manyWords = word(5, 10);
+  const bigWord = word({ length: 150 });
+  const manyWords = word({ length: 5, amount: 10 });
 
   // Check if the big word is actually big
   expect(bigWord()[0]).toHaveLength(150);
