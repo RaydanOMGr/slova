@@ -1,18 +1,25 @@
 import type { Param } from "../types/parameters";
-
 import { generateString } from "../tools";
 import { handle } from "../handlers/text";
 
+/**
+ * Text class that generates an array of paragraphs
+ */
 export class Text {
+  /** The length of the paragraph */
   public readonly length: number;
+  /** Amount of words in a paragraph */
   public readonly words: number;
+  /** length * paragraphs = total length */
   public readonly paragraphs: number;
 
-  constructor({
-    length = 300, // The length of the text
-    words, // words in a paragraph
-    paragraphs = 1, // length * paragraphs = total length
-  }: Param.Text) {
+  /**
+   * An instance of Text to generate the text
+   * @param {number} param.length The length of the paragraph, is an optional parameter (default: 300)
+   * @param {number} param.words Amount of words in a paragraph, is an optional parameter
+   * @param {number} param.paragraphs Amount of paragraphs to generate, is an optional parameter (default: 1)
+   */
+  constructor({ length = 300, words, paragraphs = 1 }: Param.Text) {
     // Handle whether parameters are acceptable or not
     handle({ length, words, paragraphs });
 
@@ -22,7 +29,11 @@ export class Text {
     this.paragraphs = paragraphs;
   }
 
-  public generate() {
+  /**
+   * Generate the text out of paragraphs with a certain length & amount of words
+   * @returns {string[]} an array of paragraphs
+   */
+  public generate(): string[] {
     let paragraphs = [];
 
     for (let i = 0; i < this.paragraphs; i++) {
@@ -32,10 +43,12 @@ export class Text {
     return paragraphs;
   }
 
-  private paragraph() {
+  /** Paragraph generator, decides whether amount of words is set */
+  private paragraph(): string {
     return this.words ? this.withWords() : this.withoutWords();
   }
 
+  /** Generate a paragraph with certain amount of words */
   private withWords(): string {
     let words = [];
 
@@ -61,6 +74,7 @@ export class Text {
     return words.join(" ");
   }
 
+  /** Generate a paragraph with no words amount set */
   private withoutWords(): string {
     let words = [];
 

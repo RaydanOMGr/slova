@@ -6,7 +6,7 @@
 
 Slova (Russian word for "words", pronounced `/slova/`) is a placeholder
 tool generating non-existing words. It includes various generators
-such as: `word`, `text` & `rap`.
+such as: `word`, `text` & `mumbleRap`.
 
 # Install
 
@@ -99,9 +99,3 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 # License
 
 This project is under [MIT](https://choosealicense.com/licenses/mit/) license. You can freely use it for your own purposes.
-
-# Todo
-
-- [ ] Add JSDoc
-- [x] Return OOP approach
-- [x] Return single object argument approach

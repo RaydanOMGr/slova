@@ -1,5 +1,9 @@
 import { Models } from "../types/models";
 
+/**
+ * Consonants
+ * @see
+ */
 export const consonants: Models.Consonant[] = [
   { letter: "b", priority: 1 },
   { letter: "c", priority: 2 },
@@ -36,4 +40,7 @@ export const digraphs: Models.Digraph[] = [
   { letter: "ch", priority: 1 },
   { letter: "ck", priority: 1 },
   { letter: "sh", priority: 1 },
+  { letter: "th", priority: 1 },
+  { letter: "ng", priority: 2 },
+  { letter: "wh", priority: 2 },
 ];

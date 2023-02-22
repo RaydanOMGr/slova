@@ -4,7 +4,7 @@ export {
   Word as WordGenerator,
   MumbleRap,
   Text,
-  Word
+  Word,
 } from "./lib/classes";
 export * from "./lib/functions";
 export * from "./lib/tools";

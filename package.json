@@ -1,7 +1,7 @@
 {
   "name": "slova",
   "version": "1.0.0",
-  "description": "A placeholder tool generating non-existing words",
+  "description": "A placeholder tool for generating non-existing words",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
