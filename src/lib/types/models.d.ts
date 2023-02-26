@@ -4,11 +4,31 @@ import type { Priority } from "./enumerates";
 /** Models used for the Generator tool */
 export declare namespace Models {
   /** Consonant object with its letter & priority */
-  type Consonant = { letter: Char.Consonant, priority: Priority };
+  interface Consonant {
+    /** Consonant from the english alphabet */
+    letter: Char.Consonant;
+    /** A priority of the letter 0-4 */
+    priority: Priority;
+  }
   /** Vowel object with its letter & priority */
-  type Vowel = { letter: Char.Vowel, priority: Priority };
+  interface Vowel {
+    /** Vowel from the english alphabet */
+    letter: Char.Vowel;
+    /** A priority of the letter 0-4 */
+    priority: Priority;
+  }
   /** Digraph object with its letter & priority */
-  type Digraph = { letter: Char.Digraph, priority: Priority };
+  interface Digraph {
+    /** Digraph from the english alphabet */
+    letter: Char.Digraph;
+    /** A priority of the letter 0-4 */
+    priority: Priority;
+  }
   /** Any object with its letter & priority */
-  type Any = { letter: Char.Consonant | Char.Digraph | Char.Vowel, priority: Priority };
+  interface Any {
+    /** Any letter from the english alphabet */
+    letter: Char.Consonant | Char.Digraph | Char.Vowel;
+    /** A priority of the letter 0-4 */
+    priority: Priority;
+  }
 }

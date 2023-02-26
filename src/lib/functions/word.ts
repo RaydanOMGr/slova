@@ -1,27 +1,19 @@
-import { sampleWord } from "../tools";
+import type { Param } from "../types/parameters";
+import { Word } from "../classes";
 
-export function word(
-  length: number = 5,
-  amount: number = 1,
-  syllables: number = (length / 3)
-): () => string[] {
-  if (isNaN(length)) throw 'Length must be a number!';
-  if (isNaN(amount)) throw 'Amount must be a number!';
-  if (isNaN(syllables)) throw 'Syllables must be a number!';
-  if (length < 0 || length === 0) throw 'Length cannot be negative or equal 0!';
-  if (amount < 0 || amount === 0) throw 'Amount cannot be negative or equal 0!';
-  if (syllables < 0 || syllables === 0) throw 'Syllables cannot be negative or equal 0!';
+/**
+ * word function that generates an array of speakable strings
+ * @param {number} param.length Length of the word, is an optional parameter (default: 5)
+ * @param {number} param.amount Amount of words to generate, is an optional parameter (default: 1)
+ * @param {number} param.syllables Amount of syllables in a word, is an optional parameter (default: length / 3)
+ * @returns {() => string[]} Inner function generator, generates on call
+ */
+export function word(params: Param.Word): () => string[] {
+  const instance = new Word(params);
 
-  // Average syllable length is 3 as it can be 2, 3 or 4
-  syllables = Math.ceil(syllables);
-
-  return () => {
-    let response: string[] = [];
-
-		for (let i = 0; i < amount; i++) {
-			response.push(sampleWord(length, syllables));
-		}
-
-		return response;
-  }
+  /**
+   * Generate an array of words (strings) based off their length, quantity & amount of syllables
+   * @returns {string[]} An array of generated strings
+   */
+  return (): string[] => instance.generate();
 }

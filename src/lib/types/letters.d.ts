@@ -27,5 +27,5 @@ export declare namespace Char {
   type Vowel = "a" | "e" | "i" | "o" | "u" | "y";
 
   /** Some lowercased digraphs from english alphabet */
-  type Digraph = "ch" | "ck" | "sh";
+  type Digraph = "ch" | "ck" | "sh" | "th" | "ng" | "wh";
 }

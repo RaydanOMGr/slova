@@ -1,41 +1,18 @@
-import { text } from "./text";
+import type { Param } from "../types";
+import { MumbleRap } from "../classes";
 
-function quatrain(length: number) {
-  const quatrain = [];
+/**
+ * Mumble rap generator
+ * @param {number} params.length Length of each quatrain & chorus, is an optional parameter (default: 150)
+ * @param {string} params.scheme Scheme of the rap where q stands for quatrain, c stands for chorus: a scheme is split by -, is an optional parameter (default: "q-c-q-q-c")
+ * @returns {() => string[][]} Inner function generator, generates on call
+ */
+export function mumbleRap(params: Param.MumbleRap): () => string[][] {
+  const instance = new MumbleRap(params);
 
-  const quatrainLineLength = Math.floor(length / 4);
-  const quatrainLineInstance = text(quatrainLineLength);
-  for (let i = 0; i < 4; i++) {
-      quatrain.push(quatrainLineInstance().join(' '));
-  }
-
-  return quatrain;
-}
-
-export function mumbleRap(
-  rawScheme: string = "q-c-q-q-c",
-  length: number = 150
-): () => string[][] {
-  // //
-  if (isNaN(length)) throw new Error('Length must be a number!');
-  if (length <= 0) throw new Error('Length cannot be negative or equal 0!');
-  if (typeof rawScheme !== 'string') throw new Error('Scheme must be a string!');
-  if (!rawScheme.match(/^([q|c])\1*(?:-([q|c]))*$/)) throw new Error('Scheme must only contain q and c!');
-  if (rawScheme.length < 1) throw new Error('Scheme cannot be empty!');
-  // //
-
-  let scheme = rawScheme.split('-');
-
-  return () => {
-    let mumbleRap: string[][] = [];
-    const chorus = quatrain(length);
-
-    for (let i = 0; i < scheme.length; i++) {
-        if (scheme[i] === 'q') mumbleRap.push(quatrain(length));
-        else if (scheme[i] === 'c') mumbleRap.push(chorus);
-        else throw new Error('Invalid scheme!');
-    }
-
-    return mumbleRap;
-  }
+  /**
+   * Generate the rap, the scheme is split & looped through
+   * @returns {string[][]} an array of q/c arrays
+   */
+  return (): string[][] => instance.generate();
 }
