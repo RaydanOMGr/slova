@@ -6,8 +6,7 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "prettier:check": "prettier --check \"**/*.ts\"",
-    "prettier:write": "prettier --write \"**/*.ts\"",
+    "format": "prettier --write \"**/*.ts\"",
     "build": "tsup src/index.ts --format=esm,cjs --dts --minify",
     "build-fast": "tsup src/index.ts --format=esm,cjs --no-dts --minify",
     "dev": "pnpm build-fast --watch",
