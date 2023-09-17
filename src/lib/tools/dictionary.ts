@@ -1,4 +1,4 @@
-import { Models } from "../types/models";
+import type { Models } from "../types/models";
 
 /**
  * Consonants
