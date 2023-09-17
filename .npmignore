@@ -4,5 +4,5 @@ public
 tests
 
 # Configs
-jest.config.js
+vite.config.js
 tsconfig.json

@@ -1,5 +1,4 @@
 {
-  "types": ["vitest/globals"],
   "compilerOptions": {
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
@@ -20,10 +19,11 @@
     "tsBuildInfoFile": "node_modules/.cache/.tsbuildinfo",
     "outDir": "./dist",
     "esModuleInterop": true,
+    "types": ["vitest/globals"],
     "forceConsistentCasingInFileNames": true,
   },
-  "include": ["src"],
+  "include": ["src", "tests"],
   "exclude": [
-    "tests", "./*.d.ts", "node_modules"
+    "./*.d.ts", "node_modules"
   ]
 }
