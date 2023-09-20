@@ -41,7 +41,7 @@ export class Word {
         generateString({
           length: this.length,
           syllables: this.syllables,
-        })
+        }),
       );
     }
 

@@ -19,7 +19,11 @@ test("Text", () => {
   const withoutParagraphs = text({ length: 150, words: 40 });
   const withParagraphs = text({ length: 150, words: 40, paragraphs: 3 });
   const withoutParagraphsClass = new TextGenerator({ length: 150, words: 40 });
-  const withParagraphsClass = new TextGenerator({ length: 150, words: 40, paragraphs: 3 });
+  const withParagraphsClass = new TextGenerator({
+    length: 150,
+    words: 40,
+    paragraphs: 3,
+  });
 
   // Test if text generates 40 words
   expect(withoutParagraphs()[0].split(" ")).toHaveLength(40);

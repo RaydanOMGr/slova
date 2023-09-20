@@ -1,15 +1,16 @@
 {
   "name": "slova",
-  "version": "2.2.2",
+  "version": "2.2.8",
   "description": "A placeholder tool for generating non-existing words",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/types/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "compile": "tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json ./tsconfig.types.json",
-    "prettier:check": "prettier --check \"**/*.ts\"",
-    "prettier:write": "prettier --write \"**/*.ts\"",
-    "test": "jest"
+    "format": "prettier --write \"**/*.ts\"",
+    "build": "tsup src/index.ts --format=esm,cjs --dts --minify",
+    "build-fast": "tsup src/index.ts --format=esm,cjs --no-dts --minify",
+    "dev": "pnpm build-fast --watch",
+    "test": "vitest"
   },
   "repository": {
     "type": "git",
@@ -37,9 +38,8 @@
   },
   "homepage": "https://github.com/RaydanOMGr/slova#readme",
   "devDependencies": {
-    "@types/jest": "^29.4.0",
-    "jest": "^29.4.3",
-    "prettier": "^2.8.4",
-    "ts-jest": "^29.0.5"
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.4"
   }
 }

@@ -1,4 +1,4 @@
-import { Param } from "../types/parameters";
+import type { Param } from "../types/parameters";
 
 export function handle(params: Param.Text): void {
   if (params.length && isNaN(params.length)) throw "Length must be a number!";

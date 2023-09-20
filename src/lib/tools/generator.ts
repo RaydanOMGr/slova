@@ -1,5 +1,5 @@
-import { Models } from "../types/models";
-import { Param } from "../types/parameters";
+import type { Models } from "../types/models";
+import type { Param } from "../types/parameters";
 import { consonants, digraphs, vowels } from "./dictionary";
 
 function getLetter(letterList: Models.Any[]): string {

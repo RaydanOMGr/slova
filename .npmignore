@@ -4,8 +4,5 @@ public
 tests
 
 # Configs
-jest.config.js
-tsconfig.cjs.json
-tsconfig.esm.json
+vite.config.js
 tsconfig.json
-tsconfig.types.json
