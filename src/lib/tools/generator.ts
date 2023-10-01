@@ -2,14 +2,6 @@ import type { Models } from "../types/models";
 import type { Param } from "../types/parameters";
 import { consonants, digraphs, vowels } from "./dictionary";
 
-/**
- * Randomly generates true or false based on a fair coin.
- * @returns {boolean} true or false with 50% chance.
- */
-function getFairCoin(): boolean {
-  return Math.floor(Math.random() * 2) === 1;
-}
-
 function getLetter(letterList: Models.Any[]): string {
   let randomNum = Math.floor(Math.random() * letterList.length);
   let letter = letterList[randomNum];
@@ -23,26 +15,14 @@ function getLetter(letterList: Models.Any[]): string {
 
 function word(syllables: number): string {
   let word = "";
-
   if (syllables === 0) throw "Syllables cannot be 0!";
 
   for (let i = 0; i < syllables; i++) {
-    let syllable: string = "";
-    const threeLetterSyllable = getFairCoin();
+    const lengthType = Math.floor(Math.random() * 4); // Either 0, 1, 2 or 3
 
-    if (threeLetterSyllable) {
-      const doubleVowels = getFairCoin();
-      syllable += getLetter(consonants);
-
-      if (doubleVowels) syllable += getLetter(vowels) + getLetter(vowels);
-      else syllable += getLetter(vowels) + getLetter(consonants);
-    } else {
-      syllable += getLetter(consonants) + getLetter(vowels);
-
-      if (getFairCoin()) syllable += getLetter(digraphs);
-    }
-
-    word += syllable;
+    word += getLetter(consonants) + getLetter(vowels);
+    if (lengthType !== 3)
+      word += getLetter([vowels, consonants, digraphs][lengthType]);
   }
 
   return word;
