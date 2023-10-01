@@ -6,9 +6,8 @@ function getLetter(letterList: Models.Any[]): string {
   let randomNum = Math.floor(Math.random() * letterList.length);
   let letter = letterList[randomNum];
 
-  if (Math.floor(Math.random() * (letter.priority + 1)) !== letter.priority) {
-    return getLetter(letterList);
-  }
+  if (letter.probability === 1) return letter.letter;
+  if (letter.probability < Math.random()) return getLetter(letterList);
 
   return letter.letter;
 }
