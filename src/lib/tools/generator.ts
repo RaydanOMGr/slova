@@ -2,6 +2,14 @@ import type { Models } from "../types/models";
 import type { Param } from "../types/parameters";
 import { consonants, digraphs, vowels } from "./dictionary";
 
+/**
+ * Randomly generates true or false based on a fair coin.
+ * @returns {boolean} true or false with 50% chance.
+ */
+function getFairCoin(): boolean {
+  return Math.floor(Math.random() * 2) === 1;
+}
+
 function getLetter(letterList: Models.Any[]): string {
   let randomNum = Math.floor(Math.random() * letterList.length);
   let letter = letterList[randomNum];
@@ -19,32 +27,22 @@ function word(syllables: number): string {
   if (syllables === 0) throw "Syllables cannot be 0!";
 
   for (let i = 0; i < syllables; i++) {
-    const thirdLetter = Math.floor(Math.random() * 2);
-    let syllable = "";
+    let syllable: string = "";
+    const threeLetterSyllable = getFairCoin();
 
-    if (thirdLetter == 1) {
-      const randomNum4 = Math.floor(Math.random() * 2);
+    if (threeLetterSyllable) {
+      const doubleVowels = getFairCoin();
+      syllable += getLetter(consonants);
 
-      syllable = syllable + getLetter(consonants);
+      if (doubleVowels) syllable += getLetter(vowels) + getLetter(vowels);
+      else syllable += getLetter(vowels) + getLetter(consonants);
+    } else {
+      syllable += getLetter(consonants) + getLetter(vowels);
 
-      if (randomNum4 == 0) {
-        syllable = syllable + getLetter(vowels);
-        syllable = syllable + getLetter(consonants);
-      } else if (randomNum4 == 1) {
-        syllable = syllable + getLetter(vowels);
-        syllable = syllable + getLetter(vowels);
-      }
-    } else if (thirdLetter == 0) {
-      syllable = syllable + getLetter(consonants);
-      syllable = syllable + getLetter(vowels);
-
-      const digraphLetters = Math.floor(Math.random() * 2);
-      if (digraphLetters == 1) {
-        syllable = syllable + getLetter(digraphs);
-      }
+      if (getFairCoin()) syllable += getLetter(digraphs);
     }
 
-    word = word + syllable;
+    word += syllable;
   }
 
   return word;
