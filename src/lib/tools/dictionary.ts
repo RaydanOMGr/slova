@@ -1,46 +1,42 @@
 import type { Models } from "../types/models";
 
-/**
- * Consonants
- * @see
- */
 export const consonants: Models.Consonant[] = [
-  { letter: "b", priority: 1 },
-  { letter: "c", priority: 2 },
-  { letter: "d", priority: 1 },
-  { letter: "f", priority: 1 },
-  { letter: "g", priority: 2 },
-  { letter: "h", priority: 2 },
-  { letter: "j", priority: 2 },
-  { letter: "k", priority: 1 },
-  { letter: "l", priority: 1 },
-  { letter: "m", priority: 1 },
-  { letter: "n", priority: 1 },
-  { letter: "p", priority: 1 },
-  { letter: "q", priority: 4 },
-  { letter: "r", priority: 1 },
-  { letter: "s", priority: 1 },
-  { letter: "t", priority: 1 },
-  { letter: "v", priority: 2 },
-  { letter: "w", priority: 3 },
-  { letter: "x", priority: 3 },
-  { letter: "z", priority: 3 },
+  { letter: "b", probability: 1 },
+  { letter: "c", probability: .66 },
+  { letter: "d", probability: 1 },
+  { letter: "f", probability: 1 },
+  { letter: "g", probability: .66 },
+  { letter: "h", probability: .66 },
+  { letter: "j", probability: .66 },
+  { letter: "k", probability: 1 },
+  { letter: "l", probability: 1 },
+  { letter: "m", probability: 1 },
+  { letter: "n", probability: 1 },
+  { letter: "p", probability: 1 },
+  { letter: "q", probability: .4 },
+  { letter: "r", probability: 1 },
+  { letter: "s", probability: 1 },
+  { letter: "t", probability: 1 },
+  { letter: "v", probability: .66 },
+  { letter: "w", probability: .5 },
+  { letter: "x", probability: .5 },
+  { letter: "z", probability: .5 },
 ];
 
 export const vowels: Models.Vowel[] = [
-  { letter: "a", priority: 1 },
-  { letter: "e", priority: 1 },
-  { letter: "i", priority: 1 },
-  { letter: "o", priority: 1 },
-  { letter: "u", priority: 1 },
-  { letter: "y", priority: 2 },
+  { letter: "a", probability: 1 },
+  { letter: "e", probability: 1 },
+  { letter: "i", probability: 1 },
+  { letter: "o", probability: 1 },
+  { letter: "u", probability: 1 },
+  { letter: "y", probability: .66 },
 ];
 
 export const digraphs: Models.Digraph[] = [
-  { letter: "ch", priority: 1 },
-  { letter: "ck", priority: 1 },
-  { letter: "sh", priority: 1 },
-  { letter: "th", priority: 1 },
-  { letter: "ng", priority: 2 },
-  { letter: "wh", priority: 2 },
+  { letter: "ch", probability: 1 },
+  { letter: "ck", probability: 1 },
+  { letter: "sh", probability: 1 },
+  { letter: "th", probability: 1 },
+  { letter: "ng", probability: .66 },
+  { letter: "wh", probability: .66 },
 ];

@@ -6,45 +6,22 @@ function getLetter(letterList: Models.Any[]): string {
   let randomNum = Math.floor(Math.random() * letterList.length);
   let letter = letterList[randomNum];
 
-  if (Math.floor(Math.random() * (letter.priority + 1)) !== letter.priority) {
-    return getLetter(letterList);
-  }
+  if (letter.probability === 1) return letter.letter;
+  if (letter.probability < Math.random()) return getLetter(letterList);
 
   return letter.letter;
 }
 
 function word(syllables: number): string {
   let word = "";
-
   if (syllables === 0) throw "Syllables cannot be 0!";
 
   for (let i = 0; i < syllables; i++) {
-    const thirdLetter = Math.floor(Math.random() * 2);
-    let syllable = "";
+    const lengthType = Math.floor(Math.random() * 4); // Either 0, 1, 2 or 3
 
-    if (thirdLetter == 1) {
-      const randomNum4 = Math.floor(Math.random() * 2);
-
-      syllable = syllable + getLetter(consonants);
-
-      if (randomNum4 == 0) {
-        syllable = syllable + getLetter(vowels);
-        syllable = syllable + getLetter(consonants);
-      } else if (randomNum4 == 1) {
-        syllable = syllable + getLetter(vowels);
-        syllable = syllable + getLetter(vowels);
-      }
-    } else if (thirdLetter == 0) {
-      syllable = syllable + getLetter(consonants);
-      syllable = syllable + getLetter(vowels);
-
-      const digraphLetters = Math.floor(Math.random() * 2);
-      if (digraphLetters == 1) {
-        syllable = syllable + getLetter(digraphs);
-      }
-    }
-
-    word = word + syllable;
+    word += getLetter(consonants) + getLetter(vowels);
+    if (lengthType !== 3)
+      word += getLetter([vowels, consonants, digraphs][lengthType]);
   }
 
   return word;

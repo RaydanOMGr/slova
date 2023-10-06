@@ -1,6 +1,6 @@
 {
   "name": "slova",
-  "version": "2.2.8",
+  "version": "2.2.9",
   "description": "A placeholder tool for generating non-existing words",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
